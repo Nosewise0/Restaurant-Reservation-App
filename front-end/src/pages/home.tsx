@@ -2,7 +2,7 @@ export default function Home() {
     return (
         <section className="bg-[#AC2B2B] w-full min-h-[calc(100vh-100px)] text-white overflow-hidden flex items-center py-16 px-6 lg:px-16">
             <div className="container mx-auto max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
-                {/* Left Content */}
+
                 <div className="flex-1 max-w-2xl flex flex-col items-start space-y-4">
                     <h1 className="font-inika text-5xl sm:text-6xl md:text-7xl font-normal tracking-tight leading-tight">
                         Good food. Great moments.
@@ -19,12 +19,12 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* Right Staggered Image Cards */}
+
                 <div className="flex-1 flex justify-center lg:justify-end">
                     <div className="flex items-start gap-6 sm:gap-8">
-                        {/* Lower / Left Image Card */}
+
                         <div className="w-56 sm:w-64 md:w-72 lg:w-80 h-[360px] sm:h-[420px] md:h-[480px] bg-[#D6D6D6] shadow-2xl mt-16 sm:mt-24 overflow-hidden transition-transform duration-500 hover:-translate-y-2 group">
-                            {/* Insert your first image src below */}
+
                             <img
                                 src=""
                                 alt="Featured Dish"
@@ -33,9 +33,9 @@ export default function Home() {
                             />
                         </div>
 
-                        {/* Higher / Right Image Card */}
+
                         <div className="w-56 sm:w-64 md:w-72 lg:w-80 h-[360px] sm:h-[420px] md:h-[480px] bg-[#D6D6D6] shadow-2xl overflow-hidden transition-transform duration-500 hover:-translate-y-2 group">
-                            {/* Insert your second image src below */}
+
                             <img
                                 src=""
                                 alt="Dining Experience"
