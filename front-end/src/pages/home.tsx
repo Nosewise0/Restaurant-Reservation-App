@@ -1,6 +1,6 @@
 export default function Home() {
     return (
-        <section className="bg-[#AC2B2B] w-full min-h-[calc(100vh-100px)] text-white overflow-hidden flex items-center py-16 px-6 lg:px-16">
+        <section className="bg-[#AC2B2B] w-full min-h-[calc(100vh-100px)] text-white overflow-hidden flex flex-col justify-center relative py-16 pb-24 px-6 lg:px-16">
             <div className="container mx-auto max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
 
                 <div className="flex-1 max-w-2xl flex flex-col items-start space-y-4">
@@ -46,6 +46,24 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+
+            {/* Scroll For More Indicator */}
+            <a
+                href="#about"
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/80 hover:text-white transition-all duration-300 group cursor-pointer select-none"
+            >
+                <span className="font-instrumental text-sm sm:text-base tracking-[0.2em] uppercase font-light group-hover:tracking-[0.28em] transition-all duration-300">
+                    Scroll for more
+                </span>
+                <svg
+                    className="w-5 h-5 animate-bounce transition-transform duration-300 group-hover:translate-y-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </a>
         </section>
     )
 }

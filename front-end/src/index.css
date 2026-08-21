@@ -15,3 +15,7 @@
     --font-smooch: "Smooch Sans", sans-serif;
     --font-instrumental: "Instrument Serif", sans-serif;
 }
+
+html {
+    scroll-behavior: smooth;
+}
