@@ -2,6 +2,8 @@
 import Home from "./pages/home"
 import Navbar from "./pages/navbar"
 import About from "./pages/about"
+import Products from "./pages/products"
+import Footer from "./pages/footer"
 
 function App() {
 
@@ -10,6 +12,8 @@ function App() {
       <Navbar />
       <Home />
       <About />
+      <Products />
+      <Footer />
     </>
   )
 }

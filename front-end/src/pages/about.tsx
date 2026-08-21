@@ -1,4 +1,5 @@
 import { useState } from "react"
+import ScrollReveal from "../components/ScrollReveal"
 
 export default function About() {
 
@@ -26,43 +27,53 @@ export default function About() {
 
                     <div className="lg:col-span-6 flex flex-col justify-between space-y-12">
                         <div className="space-y-3">
-                            <h2 className="font-inspiration text-6xl sm:text-7xl lg:text-8xl tracking-wide leading-none select-none">
-                                Welcome to Our Table
-                            </h2>
-                            <p className="font-inspiration text-3xl sm:text-4xl text-white/90">
-                                Good food brings people together.
-                            </p>
+                            <ScrollReveal animation="fade-right" delay={100} duration={750}>
+                                <h2 className="font-inspiration text-6xl sm:text-7xl lg:text-8xl tracking-wide leading-none select-none">
+                                    Welcome to Our Table
+                                </h2>
+                            </ScrollReveal>
+                            <ScrollReveal animation="fade-right" delay={200} duration={750}>
+                                <p className="font-inspiration text-3xl sm:text-4xl text-white/90">
+                                    Good food brings people together.
+                                </p>
+                            </ScrollReveal>
                         </div>
 
-                        <div className="max-w-xl">
+                        <ScrollReveal animation="pop" delay={300} duration={800} className="max-w-xl">
                             <p className="font-instrumental text-2xl sm:text-3xl md:text-4xl text-white/95 leading-snug font-normal">
                                 Experience delicious flavors, warm hospitality, and memorable moments. We&apos;re here to make every meal something worth remembering.
                             </p>
-                        </div>
+                        </ScrollReveal>
 
-                        <div className="pt-6">
+                        <ScrollReveal animation="fade-up" delay={400} duration={700} className="pt-6">
                             <a
                                 href="#menus"
                                 className="font-instrumental text-2xl text-white/90 hover:text-white cursor-pointer relative py-1 inline-block transition-all duration-300 hover:-translate-y-0.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
                             >
                                 Menus
                             </a>
-                        </div>
+                        </ScrollReveal>
                     </div>
 
 
                     <div className="lg:col-span-6 flex items-center justify-center lg:justify-end gap-3 sm:gap-6">
+                        <ScrollReveal animation="fade-right" delay={250} duration={700}>
+                            <button
+                                onClick={prevSlide}
+                                aria-label="Previous slide"
+                                className="text-white text-3xl sm:text-4xl font-light hover:scale-125 transition-transform duration-200 cursor-pointer select-none p-2"
+                            >
+                                &lt;
+                            </button>
+                        </ScrollReveal>
 
-                        <button
-                            onClick={prevSlide}
-                            aria-label="Previous slide"
-                            className="text-white text-3xl sm:text-4xl font-light hover:scale-125 transition-transform duration-200 cursor-pointer select-none p-2"
+
+                        <ScrollReveal
+                            animation="pop"
+                            delay={200}
+                            duration={850}
+                            className="relative w-72 sm:w-80 md:w-96 lg:w-[420px] h-[440px] sm:h-[500px] md:h-[560px] bg-[#D6D6D6] overflow-hidden shadow-2xl group"
                         >
-                            &lt;
-                        </button>
-
-
-                        <div className="relative w-72 sm:w-80 md:w-96 lg:w-[420px] h-[440px] sm:h-[500px] md:h-[560px] bg-[#D6D6D6] overflow-hidden shadow-2xl group">
                             {images.map((imgSrc, index) => (
                                 <div
                                     key={index}
@@ -95,16 +106,18 @@ export default function About() {
                                     />
                                 ))}
                             </div>
-                        </div>
+                        </ScrollReveal>
 
 
-                        <button
-                            onClick={nextSlide}
-                            aria-label="Next slide"
-                            className="text-white text-3xl sm:text-4xl font-light hover:scale-125 transition-transform duration-200 cursor-pointer select-none p-2"
-                        >
-                            &gt;
-                        </button>
+                        <ScrollReveal animation="fade-left" delay={250} duration={700}>
+                            <button
+                                onClick={nextSlide}
+                                aria-label="Next slide"
+                                className="text-white text-3xl sm:text-4xl font-light hover:scale-125 transition-transform duration-200 cursor-pointer select-none p-2"
+                            >
+                                &gt;
+                            </button>
+                        </ScrollReveal>
                     </div>
 
                 </div>

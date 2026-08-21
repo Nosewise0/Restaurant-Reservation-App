@@ -19,3 +19,22 @@
 html {
     scroll-behavior: smooth;
 }
+
+body {
+    overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+::-webkit-scrollbar-thumb {
+    background: #ac2b2b;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #8b2020;
+}
