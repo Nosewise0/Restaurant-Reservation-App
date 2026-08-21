@@ -13,20 +13,21 @@ export default function Navbar() {
 
                     <div className="flex items-center gap-6">
                         <ul className="flex items-center text-xl font-inika">
-                            <li className="mx-3 cursor-pointer relative py-1 transition-all duration-300 hover:-translate-y-0.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-center">
+                            <li className="mx-3 cursor-pointer relative py-1 transition-all duration-300 hover:text-amber-100 hover:-translate-y-0.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-center">
                                 Takeout
                             </li>
                             <li className="h-6 text-4xl mb-5 select-none" aria-hidden="true">|</li>
-                            <li className="mx-3 cursor-pointer relative py-1 transition-all duration-300 hover:-translate-y-0.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-center">
+                            <li className="mx-3 cursor-pointer relative py-1 transition-all duration-300 hover:text-amber-100 hover:-translate-y-0.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-center">
                                 Reserve
                             </li>
                         </ul>
 
 
+
                         <button
                             onClick={() => setIsDrawerOpen(true)}
                             aria-label="Open menu drawer"
-                            className="p-2.5 rounded-lg hover:bg-white/10 active:scale-95 transition-all duration-200 cursor-pointer flex flex-col justify-center items-center gap-1.5 group"
+                            className="p-2.5 rounded-lg  active:scale-90 transition-all duration-300 hover:scale-110 cursor-pointer flex flex-col justify-center items-center gap-1.5"
                         >
                             <span className="w-6 h-0.5 bg-white transition-all duration-300 group-hover:w-7"></span>
                             <span className="w-6 h-0.5 bg-white transition-all duration-300 group-hover:w-5"></span>
@@ -50,11 +51,13 @@ export default function Navbar() {
             >
                 <div>
                     <div className="flex justify-between items-center pb-6 border-b border-white/20">
-                        <h2 className="font-inspiration text-4xl">Oliver&Sarah</h2>
+                        <h2 className="font-inspiration text-4xl cursor-pointer transition-transform duration-300 hover:scale-105">
+                            Oliver&Sarah
+                        </h2>
                         <button
                             onClick={() => setIsDrawerOpen(false)}
                             aria-label="Close menu drawer"
-                            className="p-2 rounded-full hover:bg-white/10 text-2xl leading-none transition-colors cursor-pointer"
+                            className="w-10 h-10 rounded-full hover:bg-white/15 active:scale-90 transition-all duration-300 hover:rotate-90 hover:scale-110 flex items-center justify-center text-3xl leading-none cursor-pointer"
                         >
                             &times;
                         </button>
@@ -64,7 +67,7 @@ export default function Navbar() {
                             <li
                                 key={item}
                                 onClick={() => setIsDrawerOpen(false)}
-                                className="cursor-pointer hover:translate-x-2 transition-transform duration-200 hover:text-amber-200"
+                                className="cursor-pointer relative py-1 inline-block w-fit transition-all duration-300 hover:translate-x-2 hover:text-amber-100 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
                             >
                                 {item}
                             </li>
