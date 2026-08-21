@@ -4,7 +4,7 @@ export default function Home() {
             <div className="container mx-auto max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
 
                 <div className="flex-1 max-w-2xl flex flex-col items-start space-y-4">
-                    <h1 className="font-inika text-5xl sm:text-6xl md:text-7xl font-normal tracking-tight leading-tight">
+                    <h1 className="font-instrumental text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight leading-tight">
                         Good food. Great moments.
                     </h1>
 
