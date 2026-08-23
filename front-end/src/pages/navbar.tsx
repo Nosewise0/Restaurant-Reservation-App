@@ -151,11 +151,14 @@ export default function Navbar() {
                 </p>
             </div>
 
-            {/* Form */}
             <form
                 onSubmit={(e) => {
                     e.preventDefault()
+                    const formData = new FormData(e.currentTarget)
+                    const data = Object.fromEntries(formData.entries())
+                    console.log("Reservation Data:", data)
                     setModalOpen(false)
+                    
                 }}
                 className="px-8 py-7 flex flex-col gap-5 font-inika"
             >
@@ -163,6 +166,7 @@ export default function Navbar() {
                     <label className="text-sm text-[#8B2020] font-medium">Full Name</label>
                     <input
                         type="text"
+                        name="fullName"
                         required
                         placeholder="Jane Doe"
                         className="border border-[#AC2B2B]/25 rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#AC2B2B]/40 focus:border-[#AC2B2B] transition-all duration-200 placeholder:text-[#3A1414]/30"
@@ -174,6 +178,7 @@ export default function Navbar() {
                         <label className="text-sm text-[#8B2020] font-medium">Date</label>
                         <input
                             type="date"
+                            name="date"
                             required
                             className="border border-[#AC2B2B]/25 rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#AC2B2B]/40 focus:border-[#AC2B2B] transition-all duration-200"
                         />
@@ -182,6 +187,7 @@ export default function Navbar() {
                         <label className="text-sm text-[#8B2020] font-medium">Time</label>
                         <input
                             type="time"
+                            name="time"
                             required
                             className="border border-[#AC2B2B]/25 rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#AC2B2B]/40 focus:border-[#AC2B2B] transition-all duration-200"
                         />
@@ -193,6 +199,7 @@ export default function Navbar() {
                     <select
                         required
                         defaultValue=""
+                        name="partySize"
                         className="border border-[#AC2B2B]/25 rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#AC2B2B]/40 focus:border-[#AC2B2B] transition-all duration-200"
                     >
                         <option value="" disabled>Select guests</option>
@@ -208,6 +215,7 @@ export default function Navbar() {
                         type="text"
                         required
                         placeholder="you@example.com"
+                        name="phoneOrEmail"
                         className="border border-[#AC2B2B]/25 rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#AC2B2B]/40 focus:border-[#AC2B2B] transition-all duration-200 placeholder:text-[#3A1414]/30"
                     />
                 </div>
@@ -217,6 +225,7 @@ export default function Navbar() {
                     <textarea
                         rows={2}
                         placeholder="Allergies, celebrations, seating preference..."
+                        name="specialRequests"
                         className="border border-[#AC2B2B]/25 rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#AC2B2B]/40 focus:border-[#AC2B2B] transition-all duration-200 resize-none placeholder:text-[#3A1414]/30"
                     />
                 </div>
