@@ -4,9 +4,9 @@ import ScrollReveal from "../components/ScrollReveal"
 export default function About() {
 
     const images = [
-        "",
-        "",
-        "",
+        "https://images.unsplash.com/photo-1509710398975-6454dcdf049f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1581954548218-415cd6ee5f4d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fERpbmluZyUyMGV4cGVyaWVuY2V8ZW58MHx8MHx8fDA%3D",
+        "https://images.unsplash.com/photo-1679993387260-38824cf1a93a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fERpbmluZyUyMGV4cGVyaWVuY2V8ZW58MHx8MHx8fDA%3D",
     ]
 
     const [currentIndex, setCurrentIndex] = useState(0)
@@ -20,7 +20,7 @@ export default function About() {
     }
 
     return (
-        <section id="about" className="bg-[#231F20] text-white w-full min-h-[90vh] flex items-center py-20 px-6 lg:px-16 overflow-hidden">
+        <section id="about" className="bg-[#231F20] text-white w-full min-h-[90vh] flex items-center py-14 sm:py-20 px-4 sm:px-6 lg:px-16 overflow-hidden">
             <div className="container mx-auto max-w-7xl">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
@@ -28,7 +28,7 @@ export default function About() {
                     <div className="lg:col-span-6 flex flex-col justify-between space-y-12">
                         <div className="space-y-3">
                             <ScrollReveal animation="fade-right" delay={100} duration={750}>
-                                <h2 className="font-inspiration text-6xl sm:text-7xl lg:text-8xl tracking-wide leading-none select-none">
+                                <h2 className="font-inspiration text-5xl sm:text-7xl lg:text-8xl tracking-wide leading-none select-none">
                                     Welcome to Our Table
                                 </h2>
                             </ScrollReveal>
@@ -40,7 +40,7 @@ export default function About() {
                         </div>
 
                         <ScrollReveal animation="pop" delay={300} duration={800} className="max-w-xl">
-                            <p className="font-instrumental text-2xl sm:text-3xl md:text-4xl text-white/95 leading-snug font-normal">
+                            <p className="font-instrumental text-xl sm:text-3xl md:text-4xl text-white/95 leading-snug font-normal">
                                 Experience delicious flavors, warm hospitality, and memorable moments. We&apos;re here to make every meal something worth remembering.
                             </p>
                         </ScrollReveal>
@@ -56,12 +56,12 @@ export default function About() {
                     </div>
 
 
-                    <div className="lg:col-span-6 flex items-center justify-center lg:justify-end gap-3 sm:gap-6">
+                    <div className="lg:col-span-6 flex items-center justify-center lg:justify-end gap-1 sm:gap-6 w-full">
                         <ScrollReveal animation="fade-right" delay={250} duration={700}>
                             <button
                                 onClick={prevSlide}
                                 aria-label="Previous slide"
-                                className="text-white text-3xl sm:text-4xl font-light hover:scale-125 transition-transform duration-200 cursor-pointer select-none p-2"
+                                className="text-white text-2xl sm:text-4xl font-light hover:scale-125 transition-transform duration-200 cursor-pointer select-none p-1 sm:p-2"
                             >
                                 &lt;
                             </button>
@@ -72,7 +72,7 @@ export default function About() {
                             animation="pop"
                             delay={200}
                             duration={850}
-                            className="relative w-72 sm:w-80 md:w-96 lg:w-[420px] h-[440px] sm:h-[500px] md:h-[560px] bg-[#D6D6D6] overflow-hidden shadow-2xl group"
+                            className="relative w-[min(100%,18rem)] sm:w-80 md:w-96 lg:w-[420px] h-[340px] sm:h-[500px] md:h-[560px] bg-[#D6D6D6] overflow-hidden shadow-2xl group shrink"
                         >
                             {images.map((imgSrc, index) => (
                                 <div
@@ -113,7 +113,7 @@ export default function About() {
                             <button
                                 onClick={nextSlide}
                                 aria-label="Next slide"
-                                className="text-white text-3xl sm:text-4xl font-light hover:scale-125 transition-transform duration-200 cursor-pointer select-none p-2"
+                                className="text-white text-2xl sm:text-4xl font-light hover:scale-125 transition-transform duration-200 cursor-pointer select-none p-1 sm:p-2"
                             >
                                 &gt;
                             </button>

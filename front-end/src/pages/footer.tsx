@@ -42,11 +42,11 @@ const socialLinks = [
 export default function Footer() {
     return (
         <footer id="contact" className="bg-[#1E1E24] text-white w-full overflow-hidden">
-            <div className="container mx-auto max-w-7xl px-6 lg:px-16 py-16 lg:py-20">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10">
+            <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-16 py-12 sm:py-16 lg:py-20">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-10">
                     <ScrollReveal animation="fade-up" delay={100} duration={750}>
                         <div className="space-y-4">
-                            <h2 className="font-inspiration text-5xl sm:text-6xl cursor-pointer transition-transform duration-300 hover:scale-105 select-none w-fit">
+                            <h2 className="font-inspiration text-4xl sm:text-5xl md:text-6xl cursor-pointer transition-transform duration-300 hover:scale-105 select-none w-fit">
                                 Oliver&Sarah
                             </h2>
                             <p className="font-instrumental text-lg text-white/80 leading-relaxed max-w-xs">
@@ -108,7 +108,7 @@ export default function Footer() {
                                     <svg className="w-5 h-5 shrink-0 text-[#AC2B2B]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
-                                    <a href="mailto:hello@oliverandsarah.com" className="hover:text-white transition-colors duration-300">
+                                    <a href="mailto:hello@oliverandsarah.com" className="hover:text-white transition-colors duration-300 break-all">
                                         hello@oliverandsarah.com
                                     </a>
                                 </li>
@@ -120,17 +120,17 @@ export default function Footer() {
                         <div>
                             <h3 className="font-inika text-xl mb-6 text-white/90">Opening Hours</h3>
                             <ul className="flex flex-col gap-3 font-instrumental text-base text-white/70">
-                                <li className="flex justify-between gap-4 border-b border-white/10 pb-3">
+                                <li className="flex flex-col sm:flex-row justify-between gap-1 sm:gap-4 border-b border-white/10 pb-3">
                                     <span>Mon – Fri</span>
-                                    <span className="text-white">11:00 AM – 10:00 PM</span>
+                                    <span className="text-white whitespace-nowrap">11:00 AM – 10:00 PM</span>
                                 </li>
-                                <li className="flex justify-between gap-4 border-b border-white/10 pb-3">
+                                <li className="flex flex-col sm:flex-row justify-between gap-1 sm:gap-4 border-b border-white/10 pb-3">
                                     <span>Saturday</span>
-                                    <span className="text-white">10:00 AM – 11:00 PM</span>
+                                    <span className="text-white whitespace-nowrap">10:00 AM – 11:00 PM</span>
                                 </li>
-                                <li className="flex justify-between gap-4">
+                                <li className="flex flex-col sm:flex-row justify-between gap-1 sm:gap-4">
                                     <span>Sunday</span>
-                                    <span className="text-white">10:00 AM – 9:00 PM</span>
+                                    <span className="text-white whitespace-nowrap">10:00 AM – 9:00 PM</span>
                                 </li>
                             </ul>
                         </div>
@@ -139,9 +139,9 @@ export default function Footer() {
             </div>
 
             <div className="border-t border-white/10">
-                <div className="container mx-auto max-w-7xl px-6 lg:px-16 py-6">
+                <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-16 py-6">
                     <ScrollReveal animation="fade-up" delay={500} duration={700}>
-                        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/50 font-inika">
+                        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left text-xs sm:text-sm text-white/50 font-inika">
                             <p>&copy; {new Date().getFullYear()} Oliver & Sarah Restaurant. All rights reserved.</p>
                             <div className="flex items-center gap-6">
                                 <a href="#" className="hover:text-white/80 transition-colors duration-300">

@@ -5,19 +5,21 @@ const drawerLinks = ["Home", "Menu", "Takeout", "Reserve", "Our Story", "Contact
 
 export default function Navbar() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false)
+
 
     return (
         <>
             <nav className="bg-[#AC2B2B] text-white relative z-40">
-                <div className="container mx-auto pt-8 pb-8 px-4 flex justify-between items-center">
+                <div className="container mx-auto pt-5 sm:pt-8 pb-5 sm:pb-8 px-4 flex justify-between items-center gap-3">
                     <ScrollReveal animation="fade-down" delay={0} duration={700} repeat={false}>
-                        <h1 className="font-inspiration text-6xl cursor-pointer transition-transform duration-300 hover:scale-105 select-none">
+                        <h1 className="font-inspiration text-4xl sm:text-5xl md:text-6xl cursor-pointer transition-transform duration-300 hover:scale-105 select-none leading-none">
                             Oliver&Sarah
                         </h1>
                     </ScrollReveal>
 
-                    <div className="flex items-center gap-6">
-                        <ul className="flex items-center text-xl font-inika">
+                    <div className="flex items-center gap-2 sm:gap-6 shrink-0">
+                        <ul className="hidden sm:flex items-center text-lg md:text-xl font-inika">
                             <ScrollReveal
                                 as="li"
                                 animation="fade-left"
@@ -45,6 +47,7 @@ export default function Navbar() {
                                 delay={200}
                                 duration={650}
                                 repeat={false}
+                                onClick={() => setModalOpen(true)}
                                 className="mx-3 cursor-pointer relative py-1 transition-all duration-300 hover:text-amber-100 hover:-translate-y-0.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-center"
                             >
                                 Reserve
@@ -85,7 +88,7 @@ export default function Navbar() {
                         }`}
                         style={{ transitionDelay: isDrawerOpen ? "150ms" : "0ms" }}
                     >
-                        <h2 className="font-inspiration text-4xl cursor-pointer transition-transform duration-300 hover:scale-105">
+                        <h2 className="font-inspiration text-3xl sm:text-4xl cursor-pointer transition-transform duration-300 hover:scale-105">
                             Oliver&Sarah
                         </h2>
                         <button
@@ -124,6 +127,16 @@ export default function Navbar() {
                     <p className="mt-4 font-inika text-xs text-white/50">&copy; Oliver & Sarah Restaurant</p>
                 </div>
             </div>
+            {modalOpen && (
+                <div className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center">
+                    <div className="bg-white rounded-lg p-8 max-w-md w-full relative">
+                        <h1>
+                            hello
+                        </h1>
+                    </div>
+                </div>
+            )}
+                    
         </>
     )
 }

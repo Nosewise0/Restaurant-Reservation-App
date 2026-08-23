@@ -4,40 +4,40 @@ export default function Products() {
     const menus = [
         {
             title: "Delivery Menu",
-            image: "",
-            offsetClass: "mt-12 lg:mt-16",
+            image: "https://images.unsplash.com/photo-1760888549280-4aef010720bd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRlbGl2ZXJ5JTIwTWVudXxlbnwwfHwwfHx8MA%3D%3D",
+            offsetClass: "lg:mt-16",
         },
         {
             title: "Dining Menu",
-            image: "",
-            offsetClass: "mt-0",
+            image: "https://images.unsplash.com/photo-1710732652617-264d6f860546?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8RGluaW5nJTIwTWVudXxlbnwwfHwwfHx8MA%3D%3D",
+            offsetClass: "",
         },
         {
             title: "Drink Menu",
-            image: "",
-            offsetClass: "mt-20 lg:mt-32",
+            image: "https://images.unsplash.com/photo-1758384077164-c00b53cf718f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fERyaW5rcyUyME1lbnV8ZW58MHx8MHx8fDA%3D",
+            offsetClass: "lg:mt-32",
         },
         {
             title: "Dessert Menu",
-            image: "",
-            offsetClass: "mt-8 lg:mt-12",
+            image: "https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8RGVzc2VydCUyME1lbnV8ZW58MHx8MHx8fDA%3D",
+            offsetClass: "lg:mt-12",
         },
     ]
 
     return (
-        <section id="menus" className="bg-[#AC2B2B] text-white w-full min-h-screen py-24 px-4 sm:px-8 lg:px-12 relative overflow-hidden flex flex-col justify-center items-center">
+        <section id="menus" className="bg-[#AC2B2B] text-white w-full min-h-screen py-16 sm:py-20 md:py-24 px-4 sm:px-8 lg:px-12 relative overflow-hidden flex flex-col justify-center items-center">
             <ScrollReveal
                 animation="pop"
                 delay={100}
                 duration={900}
-                className="absolute top-2 sm:top-6 md:top-5 left-1/2 -translate-x-1/2 w-full text-center select-none pointer-events-none z-0"
+                className="absolute top-4 sm:top-6 md:top-5 left-1/2 -translate-x-1/2 w-[140%] sm:w-full text-center select-none pointer-events-none z-0"
             >
-                <h2 className="font-inspiration text-9xl sm:text-9xl md:text-[320px] lg:text-[300px] xl:text-[370px] text-white leading-none tracking-wide whitespace-nowrap drop-shadow-sm opacity-95">
+                <h2 className="font-inspiration text-[clamp(3.5rem,18vw,23rem)] text-white leading-none tracking-wide whitespace-nowrap drop-shadow-sm opacity-95">
                     View our foods
                 </h2>
             </ScrollReveal>
 
-            <div className="container mx-auto max-w-7xl relative z-10 pt-16 sm:pt-24 md:pt-32">
+            <div className="container mx-auto max-w-7xl relative z-10 pt-20 sm:pt-24 md:pt-32 w-full">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-start">
                     {menus.map((item, index) => (
                         <ScrollReveal
@@ -45,9 +45,9 @@ export default function Products() {
                             animation="pop"
                             delay={index * 150 + 100}
                             duration={800}
-                            className={`flex flex-col ${item.offsetClass} transition-transform duration-500 hover:-translate-y-2 group cursor-pointer`}
+                            className={`flex flex-col w-full max-w-sm mx-auto sm:max-w-none ${item.offsetClass} transition-transform duration-500 hover:-translate-y-2 group cursor-pointer`}
                         >
-                            <div className="bg-[#D6D6D6] h-[380px] sm:h-[430px] md:h-[480px] lg:h-[500px] rounded-xs shadow-2xl flex flex-col justify-between overflow-hidden relative">
+                            <div className="bg-[#D6D6D6] h-[300px] sm:h-[400px] md:h-[460px] lg:h-[500px] rounded-xs shadow-2xl flex flex-col justify-between overflow-hidden relative">
                                 <div className="w-full flex-1 overflow-hidden relative">
                                     {item.image ? (
                                         <img
