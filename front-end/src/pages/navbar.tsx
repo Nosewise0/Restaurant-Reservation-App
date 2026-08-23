@@ -1,12 +1,11 @@
 import { useState } from "react"
 import ScrollReveal from "../components/ScrollReveal"
 
-const drawerLinks = ["Home", "Menu", "Takeout", "Reserve", "Our Story", "Contact"]
 
 export default function Navbar() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
     const [modalOpen, setModalOpen] = useState(false)
-
+    
 
     return (
         <>
@@ -99,21 +98,43 @@ export default function Navbar() {
                             &times;
                         </button>
                     </div>
+
                     <ul className="mt-8 flex flex-col gap-6 font-inika text-2xl">
-                        {drawerLinks.map((item, index) => (
                             <li
-                                key={item}
-                                onClick={() => setIsDrawerOpen(false)}
                                 className={`cursor-pointer relative py-1 inline-block w-fit transition-all duration-300 hover:translate-x-2 hover:text-amber-100 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left ${
                                     isDrawerOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
                                 }`}
-                                style={{
-                                    transitionDelay: isDrawerOpen ? `${200 + index * 75}ms` : "0ms",
-                                }}
                             >
-                                {item}
+                                Home
                             </li>
-                        ))}
+                    </ul>
+                    <ul className="mt-8 flex flex-col gap-6 font-inika text-2xl">
+                            <li
+                                className={`cursor-pointer relative py-1 inline-block w-fit transition-all duration-300 hover:translate-x-2 hover:text-amber-100 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left ${
+                                    isDrawerOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+                                }`}
+                            >
+                                Contact
+                            </li>
+                    </ul>
+                    <ul className=" mt-8 flex flex-col gap-6 font-inika text-2xl">
+                            <li
+                                onClick={() => setModalOpen(true)}
+                                className={`md:hidden cursor-pointer relative py-1 inline-block w-fit transition-all duration-300 hover:translate-x-2 hover:text-amber-100 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left ${
+                                    isDrawerOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+                                }`}
+                            >
+                                Reserve
+                            </li>
+                    </ul>
+                    <ul className="mt-8 flex flex-col gap-6 font-inika text-2xl">
+                            <li
+                                className={`md:hidden cursor-pointer relative py-1 inline-block w-fit transition-all duration-300 hover:translate-x-2 hover:text-amber-100 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left ${
+                                    isDrawerOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+                                }`}
+                            >
+                                Takeout
+                            </li>
                     </ul>
                 </div>
                 <div
