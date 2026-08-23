@@ -1,5 +1,6 @@
 import { useState } from "react"
 import ScrollReveal from "../components/ScrollReveal"
+import { Link } from "react-router-dom"
 
 
 export default function Navbar() {
@@ -12,9 +13,13 @@ export default function Navbar() {
             <nav className="bg-[#AC2B2B] text-white relative z-40">
                 <div className="container mx-auto pt-5 sm:pt-8 pb-5 sm:pb-8 px-4 flex justify-between items-center gap-3">
                     <ScrollReveal animation="fade-down" delay={0} duration={700} repeat={false}>
-                        <h1 className="font-inspiration text-4xl sm:text-5xl md:text-6xl cursor-pointer transition-transform duration-300 hover:scale-105 select-none leading-none">
-                            Oliver&Sarah
-                        </h1>
+                        <Link to="/">
+                            <h1
+                                className="font-inspiration text-4xl sm:text-5xl md:text-6xl cursor-pointer transition-transform duration-300 hover:scale-105 select-none leading-none"
+                            >
+                                Oliver&Sarah
+                            </h1>
+                        </Link>
                     </ScrollReveal>
 
                     <div className="flex items-center gap-2 sm:gap-6 shrink-0">
@@ -100,15 +105,19 @@ export default function Navbar() {
                     </div>
 
                     <ul className="mt-8 flex flex-col gap-6 font-inika text-2xl">
+                        <Link to="/">
                             <li
+                                
                                 className={`cursor-pointer relative py-1 inline-block w-fit transition-all duration-300 hover:translate-x-2 hover:text-amber-100 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left ${
                                     isDrawerOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
                                 }`}
                             >
                                 Home
                             </li>
+                        </Link>
                     </ul>
                     <ul className="mt-8 flex flex-col gap-6 font-inika text-2xl">
+                        <Link to="/contact">
                             <li
                                 className={`cursor-pointer relative py-1 inline-block w-fit transition-all duration-300 hover:translate-x-2 hover:text-amber-100 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left ${
                                     isDrawerOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
@@ -116,6 +125,7 @@ export default function Navbar() {
                             >
                                 Contact
                             </li>
+                        </Link>
                     </ul>
                     <ul className=" mt-8 flex flex-col gap-6 font-inika text-2xl">
                             <li
@@ -157,7 +167,6 @@ export default function Navbar() {
             onClick={(e) => e.stopPropagation()}
             className="bg-[#FBF4E9] text-[#3A1414] rounded-2xl shadow-2xl w-full max-w-md relative overflow-hidden animate-[scaleIn_0.25s_ease-out]"
         >
-            {/* Header */}
             <div className="bg-[#AC2B2B] text-white px-8 pt-8 pb-6 relative">
                 <button
                     onClick={() => setModalOpen(false)}
