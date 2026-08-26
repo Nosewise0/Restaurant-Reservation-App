@@ -19,11 +19,13 @@ export default function Products() {
             title: "Drink Menu",
             image: "https://images.unsplash.com/photo-1758384077164-c00b53cf718f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fERyaW5rcyUyME1lbnV8ZW58MHx8MHx8fDA%3D",
             offsetClass: "lg:mt-32",
+            path: "/menus/drinks",
         },
         {
             title: "Dessert Menu",
             image: "https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8RGVzc2VydCUyME1lbnV8ZW58MHx8MHx8fDA%3D",
             offsetClass: "lg:mt-12",
+            path: "/menus/desserts",
         },
     ]
 
