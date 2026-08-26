@@ -1,4 +1,5 @@
 import ScrollReveal from "../components/ScrollReveal"
+import { Link } from "react-router-dom"
 
 export default function Products() {
     const menus = [
@@ -6,6 +7,7 @@ export default function Products() {
             title: "Delivery Menu",
             image: "https://images.unsplash.com/photo-1760888549280-4aef010720bd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRlbGl2ZXJ5JTIwTWVudXxlbnwwfHwwfHx8MA%3D%3D",
             offsetClass: "lg:mt-16",
+            path: "/menus/delivery",
         },
         {
             title: "Dining Menu",
@@ -47,6 +49,9 @@ export default function Products() {
                             duration={800}
                             className={`flex flex-col w-full max-w-sm mx-auto sm:max-w-none ${item.offsetClass} transition-transform duration-500 hover:-translate-y-2 group cursor-pointer`}
                         >
+                            <Link to={item.path || "#"}
+                                className="block transition-transform duration-500 hover:-translate-y-2 group cursor-pointer"
+                            >
                             <div className="bg-[#D6D6D6] h-[300px] sm:h-[400px] md:h-[460px] lg:h-[500px] rounded-xs shadow-2xl flex flex-col justify-between overflow-hidden relative">
                                 <div className="w-full flex-1 overflow-hidden relative">
                                     {item.image ? (
@@ -66,6 +71,7 @@ export default function Products() {
                                     </span>
                                 </div>
                             </div>
+                            </Link>
                         </ScrollReveal>
                     ))}
                 </div>

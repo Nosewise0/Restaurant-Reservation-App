@@ -5,6 +5,7 @@ import About from "./pages/about"
 import Products from "./pages/products"
 import Footer from "./pages/footer"
 import Contact from "./pages/contact"
+import DeliveryMenu from "./pages/menus/delivery"
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           }
         />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/menus/delivery" element={<DeliveryMenu />} />
       </Routes>
       <Footer />
     </>
