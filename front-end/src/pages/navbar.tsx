@@ -158,119 +158,160 @@ export default function Navbar() {
                     <p className="mt-4 font-inika text-xs text-white/50">&copy; Oliver & Sarah Restaurant</p>
                 </div>
             </div>
+
             {modalOpen && (
-    <div
-        onClick={() => setModalOpen(false)}
-        className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 animate-[fadeIn_0.2s_ease-out]"
-    >
-        <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-[#FBF4E9] text-[#3A1414] rounded-2xl shadow-2xl w-full max-w-md relative overflow-hidden animate-[scaleIn_0.25s_ease-out]"
-        >
-            <div className="bg-[#AC2B2B] text-white px-8 pt-8 pb-6 relative">
-                <button
+                <div
                     onClick={() => setModalOpen(false)}
-                    aria-label="Close reservation modal"
-                    className="absolute top-4 right-4 w-10 h-10 rounded-full hover:bg-white/15 active:scale-90 transition-all duration-300 hover:rotate-90 hover:scale-110 flex items-center justify-center text-3xl leading-none cursor-pointer"
+                    className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-[fadeIn_0.2s_ease-out]"
                 >
-                    &times;
-                </button>
-                <h2 className="font-inspiration text-4xl leading-none">Reserve a Table</h2>
-                <p className="font-inika text-white/80 mt-2 text-sm">
-                    We'd love to host you at Oliver&amp;Sarah.
-                </p>
-            </div>
-
-            <form
-                onSubmit={(e) => {
-                    e.preventDefault()
-                    const formData = new FormData(e.currentTarget)
-                    const data = Object.fromEntries(formData.entries())
-                    console.log("Reservation Data:", data)
-                    setModalOpen(false)
-                    
-                }}
-                className="px-8 py-7 flex flex-col gap-5 font-inika"
-            >
-                <div className="flex flex-col gap-1.5">
-                    <label className="text-sm text-[#8B2020] font-medium">Full Name</label>
-                    <input
-                        type="text"
-                        name="fullName"
-                        required
-                        placeholder="Jane Doe"
-                        className="border border-[#AC2B2B]/25 rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#AC2B2B]/40 focus:border-[#AC2B2B] transition-all duration-200 placeholder:text-[#3A1414]/30"
-                    />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-1.5">
-                        <label className="text-sm text-[#8B2020] font-medium">Date</label>
-                        <input
-                            type="date"
-                            name="date"
-                            required
-                            className="border border-[#AC2B2B]/25 rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#AC2B2B]/40 focus:border-[#AC2B2B] transition-all duration-200"
-                        />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                        <label className="text-sm text-[#8B2020] font-medium">Time</label>
-                        <input
-                            type="time"
-                            name="time"
-                            required
-                            className="border border-[#AC2B2B]/25 rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#AC2B2B]/40 focus:border-[#AC2B2B] transition-all duration-200"
-                        />
-                    </div>
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                    <label className="text-sm text-[#8B2020] font-medium">Party Size</label>
-                    <select
-                        required
-                        defaultValue=""
-                        name="partySize"
-                        className="border border-[#AC2B2B]/25 rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#AC2B2B]/40 focus:border-[#AC2B2B] transition-all duration-200"
+                    <div
+                        onClick={(e) => e.stopPropagation()}
+                        className="bg-[#FBF4E9] text-[#3A1414] rounded-sm shadow-2xl w-full max-w-md relative overflow-hidden animate-[scaleIn_0.25s_ease-out]"
                     >
-                        <option value="" disabled>Select guests</option>
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-                            <option key={n} value={n}>{n} {n === 1 ? "guest" : "guests"}</option>
-                        ))}
-                    </select>
-                </div>
+                        <button
+                            onClick={() => setModalOpen(false)}
+                            aria-label="Close reservation modal"
+                            className="absolute top-5 right-5 w-9 h-9 rounded-full hover:bg-[#3A1414]/5 active:scale-90 transition-all duration-300 hover:rotate-90 flex items-center justify-center text-2xl leading-none cursor-pointer text-[#3A1414]/50 hover:text-[#AC2B2B] z-10"
+                        >
+                            &times;
+                        </button>
 
-                <div className="flex flex-col gap-1.5">
-                    <label className="text-sm text-[#8B2020] font-medium">Phone or Email</label>
-                    <input
-                        type="text"
-                        required
-                        placeholder="you@example.com"
-                        name="phoneOrEmail"
-                        className="border border-[#AC2B2B]/25 rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#AC2B2B]/40 focus:border-[#AC2B2B] transition-all duration-200 placeholder:text-[#3A1414]/30"
-                    />
-                </div>
+                        <div className="px-8 sm:px-10 pt-12 pb-4 text-center">
+                            <span className="font-inika text-[#AC2B2B] text-xs tracking-[0.35em] uppercase">
+                                Oliver&amp;Sarah
+                            </span>
+                            <h2 className="font-inspiration text-4xl sm:text-5xl leading-tight mt-3">
+                                Reserve a Table
+                            </h2>
+                            <div className="h-px w-12 bg-[#AC2B2B]/40 mx-auto mt-5" />
+                        </div>
 
-                <div className="flex flex-col gap-1.5">
-                    <label className="text-sm text-[#8B2020] font-medium">Special Requests</label>
-                    <textarea
-                        rows={2}
-                        placeholder="Allergies, celebrations, seating preference..."
-                        name="specialRequests"
-                        className="border border-[#AC2B2B]/25 rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#AC2B2B]/40 focus:border-[#AC2B2B] transition-all duration-200 resize-none placeholder:text-[#3A1414]/30"
-                    />
-                </div>
+                        <form
+                            onSubmit={(e) => {
+                                e.preventDefault()
+                                const formData = new FormData(e.currentTarget)
+                                const data = Object.fromEntries(formData.entries())
+                                console.log("Reservation Data:", data)
+                                setModalOpen(false)
+                            }}
+                            className="px-8 sm:px-10 pt-8 pb-10 flex flex-col gap-8 font-inika"
+                        >
+                            <div className="relative">
+                                <input
+                                    type="text"
+                                    name="fullName"
+                                    id="fullName"
+                                    required
+                                    placeholder=" "
+                                    className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300"
+                                />
+                                <label
+                                    htmlFor="fullName"
+                                    className="absolute left-0 top-2 text-[#3A1414]/40 text-base transition-all duration-300 pointer-events-none peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#AC2B2B] peer-focus:tracking-widest peer-focus:uppercase peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:tracking-widest peer-[:not(:placeholder-shown)]:uppercase"
+                                >
+                                    Full Name
+                                </label>
+                            </div>
 
-                <button
-                    type="submit"
-                    className="mt-2 bg-[#AC2B2B] hover:bg-[#8B2020] text-white font-inika text-lg py-3 rounded-lg transition-all duration-300 active:scale-[0.98] cursor-pointer shadow-md hover:shadow-lg"
-                >
-                    Confirm Reservation
-                </button>
-            </form>
-        </div>
-    </div>
-)}
-                    
+                            <div className="grid grid-cols-2 gap-6">
+                                <div className="relative">
+                                    <input
+                                        type="date"
+                                        name="date"
+                                        id="date"
+                                        required
+                                        className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300 text-sm"
+                                    />
+                                    <label
+                                        htmlFor="date"
+                                        className="absolute left-0 -top-4 text-[#AC2B2B] text-xs tracking-widest uppercase pointer-events-none"
+                                    >
+                                        Date
+                                    </label>
+                                </div>
+                                <div className="relative">
+                                    <input
+                                        type="time"
+                                        name="time"
+                                        id="time"
+                                        required
+                                        className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300 text-sm"
+                                    />
+                                    <label
+                                        htmlFor="time"
+                                        className="absolute left-0 -top-4 text-[#AC2B2B] text-xs tracking-widest uppercase pointer-events-none"
+                                    >
+                                        Time
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div className="relative">
+                                <select
+                                    required
+                                    defaultValue=""
+                                    name="partySize"
+                                    id="partySize"
+                                    className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300 appearance-none cursor-pointer"
+                                >
+                                    <option value="" disabled>Select guests</option>
+                                    {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                                        <option key={n} value={n}>{n} {n === 1 ? "guest" : "guests"}</option>
+                                    ))}
+                                </select>
+                                <label
+                                    htmlFor="partySize"
+                                    className="absolute left-0 -top-4 text-[#AC2B2B] text-xs tracking-widest uppercase pointer-events-none"
+                                >
+                                    Party Size
+                                </label>
+                                <span className="absolute right-0 top-2 text-[#3A1414]/40 pointer-events-none">▾</span>
+                            </div>
+
+                            <div className="relative">
+                                <input
+                                    type="text"
+                                    required
+                                    placeholder=" "
+                                    name="phoneOrEmail"
+                                    id="phoneOrEmail"
+                                    className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300"
+                                />
+                                <label
+                                    htmlFor="phoneOrEmail"
+                                    className="absolute left-0 top-2 text-[#3A1414]/40 text-base transition-all duration-300 pointer-events-none peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#AC2B2B] peer-focus:tracking-widest peer-focus:uppercase peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:tracking-widest peer-[:not(:placeholder-shown)]:uppercase"
+                                >
+                                    Phone or Email
+                                </label>
+                            </div>
+
+                            <div className="relative">
+                                <textarea
+                                    rows={2}
+                                    placeholder=" "
+                                    name="specialRequests"
+                                    id="specialRequests"
+                                    className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300 resize-none"
+                                />
+                                <label
+                                    htmlFor="specialRequests"
+                                    className="absolute left-0 top-2 text-[#3A1414]/40 text-base transition-all duration-300 pointer-events-none peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#AC2B2B] peer-focus:tracking-widest peer-focus:uppercase peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:tracking-widest peer-[:not(:placeholder-shown)]:uppercase"
+                                >
+                                    Special Requests
+                                </label>
+                            </div>
+
+                            <button
+                                type="submit"
+                                className="group relative inline-flex items-center justify-center gap-3 mt-2 font-inika text-sm uppercase tracking-[0.25em] text-white bg-[#AC2B2B] hover:bg-[#8B2020] py-4 transition-all duration-300 active:scale-[0.98] cursor-pointer"
+                            >
+                                Confirm Reservation
+                                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
         </>
     )
 }
