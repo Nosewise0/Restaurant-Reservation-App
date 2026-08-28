@@ -1,4 +1,32 @@
+import { useState, type FormEvent } from "react";
+import { contactFormSubmit } from "../api/contactFormSubmit";
+
 export default function Contact() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [subject, setSubject] = useState("");
+    const [message, setMessage] = useState("");
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        setStatus("loading");
+        setErrorMessage(null);
+
+        try {
+            await contactFormSubmit({ name, email, subject, message });
+            setStatus("success");
+            setName("");
+            setEmail("");
+            setSubject("");
+            setMessage("");
+        } catch (err) {
+            setStatus("error");
+            setErrorMessage(err instanceof Error ? err.message : "Something went wrong");
+        }
+    };
+
     return (
         <section
             id="contact"
@@ -58,7 +86,7 @@ export default function Contact() {
 
                     {/* Right column — form */}
                     <div className="lg:col-span-7">
-                        <form className="space-y-10">
+                        <form className="space-y-10" onSubmit={handleSubmit}>
                             <div className="grid sm:grid-cols-2 gap-x-8 gap-y-10">
                                 <div className="relative">
                                     <input
@@ -67,6 +95,8 @@ export default function Contact() {
                                         name="name"
                                         required
                                         placeholder=" "
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
                                         className="peer w-full bg-transparent text-white border-0 border-b border-white/20 px-0 py-3 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300"
                                     />
                                     <label
@@ -84,6 +114,8 @@ export default function Contact() {
                                         name="email"
                                         required
                                         placeholder=" "
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                         className="peer w-full bg-transparent text-white border-0 border-b border-white/20 px-0 py-3 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300"
                                     />
                                     <label
@@ -101,6 +133,8 @@ export default function Contact() {
                                     id="subject"
                                     name="subject"
                                     placeholder=" "
+                                    value={subject}
+                                    onChange={(e) => setSubject(e.target.value)}
                                     className="peer w-full bg-transparent text-white border-0 border-b border-white/20 px-0 py-3 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300"
                                 />
                                 <label
@@ -118,6 +152,8 @@ export default function Contact() {
                                     rows={4}
                                     required
                                     placeholder=" "
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
                                     className="peer w-full bg-transparent text-white border-0 border-b border-white/20 px-0 py-3 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300 resize-none"
                                 ></textarea>
                                 <label
@@ -130,13 +166,23 @@ export default function Contact() {
 
                             <button
                                 type="submit"
-                                className="group relative inline-flex items-center gap-3 font-inika text-sm uppercase tracking-[0.25em] text-white pt-2 pb-1 cursor-pointer"
+                                disabled={status === "loading"}
+                                className="group relative inline-flex items-center gap-3 font-inika text-sm uppercase tracking-[0.25em] text-white pt-2 pb-1 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Send Message
+                                {status === "loading" ? "Sending..." : "Send Message"}
                                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                                 <span className="absolute bottom-0 left-0 h-px w-full bg-[#AC2B2B] scale-x-100 origin-left" />
                                 <span className="absolute -bottom-px left-0 h-[2px] w-0 bg-[#AC2B2B] transition-all duration-500 group-hover:w-full" />
                             </button>
+
+                            {status === "success" && (
+                                <p className="font-inika text-sm text-green-400">
+                                    Message sent! We'll get back to you soon.
+                                </p>
+                            )}
+                            {status === "error" && errorMessage && (
+                                <p className="font-inika text-sm text-red-400">{errorMessage}</p>
+                            )}
                         </form>
                     </div>
                 </div>
