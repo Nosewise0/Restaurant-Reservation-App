@@ -1,12 +1,52 @@
-import { useState } from "react"
+import { useState, type FormEvent } from "react"
 import ScrollReveal from "../components/ScrollReveal"
 import { Link } from "react-router-dom"
+import { reservationFormSubmit } from "../api/reservationForm"
 
 
 export default function Navbar() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
     const [modalOpen, setModalOpen] = useState(false)
-    
+
+    const [fullName, setFullName] = useState("")
+    const [date, setDate] = useState("")
+    const [time, setTime] = useState("")
+    const [partySize, setPartySize] = useState("")
+    const [phoneOrEmail, setPhoneOrEmail] = useState("")
+    const [specialRequests, setSpecialRequests] = useState("")
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+const [successMessage, setSuccessMessage] = useState<string | null>(null);
+const [isSubmitting, setIsSubmitting] = useState(false);
+
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setErrorMessage(null);
+    setSuccessMessage(null);
+    setIsSubmitting(true);
+
+    try {
+        await reservationFormSubmit({
+            fullName,
+            date,
+            time,
+            partySize: parseInt(partySize),
+            phoneOrEmail,
+            specialRequests,
+        });
+        setSuccessMessage("Your table has been reserved!");
+        setFullName("");
+        setDate("");
+        setTime("");
+        setPartySize("");
+        setPhoneOrEmail("");
+        setSpecialRequests("");
+    } catch (err) {
+        setErrorMessage(err instanceof Error ? err.message : "Something went wrong");
+    } finally {
+        setIsSubmitting(false);
+    }
+};
 
     return (
         <>
@@ -187,128 +227,134 @@ export default function Navbar() {
                         </div>
 
                         <form
-                            onSubmit={(e) => {
-                                e.preventDefault()
-                                const formData = new FormData(e.currentTarget)
-                                const data = Object.fromEntries(formData.entries())
-                                console.log("Reservation Data:", data)
-                                setModalOpen(false)
-                            }}
-                            className="px-8 sm:px-10 pt-8 pb-10 flex flex-col gap-8 font-inika"
-                        >
-                            <div className="relative">
-                                <input
-                                    type="text"
-                                    name="fullName"
-                                    id="fullName"
-                                    required
-                                    placeholder=" "
-                                    className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300"
-                                />
-                                <label
-                                    htmlFor="fullName"
-                                    className="absolute left-0 top-2 text-[#3A1414]/40 text-base transition-all duration-300 pointer-events-none peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#AC2B2B] peer-focus:tracking-widest peer-focus:uppercase peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:tracking-widest peer-[:not(:placeholder-shown)]:uppercase"
-                                >
-                                    Full Name
-                                </label>
-                            </div>
+    onSubmit={handleSubmit}
+    className="px-8 sm:px-10 pt-8 pb-10 flex flex-col gap-8 font-inika"
+>
+    <div className="relative">
+        <input
+            type="text"
+            name="fullName"
+            id="fullName"
+            required
+            placeholder=" "
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300"
+        />
+        <label
+            htmlFor="fullName"
+            className="absolute left-0 top-2 text-[#3A1414]/40 text-base transition-all duration-300 pointer-events-none peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#AC2B2B] peer-focus:tracking-widest peer-focus:uppercase peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:tracking-widest peer-[:not(:placeholder-shown)]:uppercase"
+        >
+            Full Name
+        </label>
+    </div>
 
-                            <div className="grid grid-cols-2 gap-6">
-                                <div className="relative">
-                                    <input
-                                        type="date"
-                                        name="date"
-                                        id="date"
-                                        required
-                                        className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300 text-sm"
-                                    />
-                                    <label
-                                        htmlFor="date"
-                                        className="absolute left-0 -top-4 text-[#AC2B2B] text-xs tracking-widest uppercase pointer-events-none"
-                                    >
-                                        Date
-                                    </label>
-                                </div>
-                                <div className="relative">
-                                    <input
-                                        type="time"
-                                        name="time"
-                                        id="time"
-                                        required
-                                        className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300 text-sm"
-                                    />
-                                    <label
-                                        htmlFor="time"
-                                        className="absolute left-0 -top-4 text-[#AC2B2B] text-xs tracking-widest uppercase pointer-events-none"
-                                    >
-                                        Time
-                                    </label>
-                                </div>
-                            </div>
+    <div className="grid grid-cols-2 gap-6">
+        <div className="relative">
+            <input
+                type="date"
+                name="date"
+                id="date"
+                required
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300 text-sm"
+            />
+            <label htmlFor="date" className="absolute left-0 -top-4 text-[#AC2B2B] text-xs tracking-widest uppercase pointer-events-none">
+                Date
+            </label>
+        </div>
+        <div className="relative">
+            <input
+                type="time"
+                name="time"
+                id="time"
+                required
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+                className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300 text-sm"
+            />
+            <label htmlFor="time" className="absolute left-0 -top-4 text-[#AC2B2B] text-xs tracking-widest uppercase pointer-events-none">
+                Time
+            </label>
+        </div>
+    </div>
 
-                            <div className="relative">
-                                <select
-                                    required
-                                    defaultValue=""
-                                    name="partySize"
-                                    id="partySize"
-                                    className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300 appearance-none cursor-pointer"
-                                >
-                                    <option value="" disabled>Select guests</option>
-                                    {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-                                        <option key={n} value={n}>{n} {n === 1 ? "guest" : "guests"}</option>
-                                    ))}
-                                </select>
-                                <label
-                                    htmlFor="partySize"
-                                    className="absolute left-0 -top-4 text-[#AC2B2B] text-xs tracking-widest uppercase pointer-events-none"
-                                >
-                                    Party Size
-                                </label>
-                                <span className="absolute right-0 top-2 text-[#3A1414]/40 pointer-events-none">▾</span>
-                            </div>
+    <div className="relative">
+        <select
+            required
+            name="partySize"
+            id="partySize"
+            value={partySize}
+            onChange={(e) => setPartySize(e.target.value)}
+            className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300 appearance-none cursor-pointer"
+        >
+            <option value="" disabled>Select guests</option>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                <option key={n} value={n}>{n} {n === 1 ? "guest" : "guests"}</option>
+            ))}
+        </select>
+        <label htmlFor="partySize" className="absolute left-0 -top-4 text-[#AC2B2B] text-xs tracking-widest uppercase pointer-events-none">
+            Party Size
+        </label>
+        <span className="absolute right-0 top-2 text-[#3A1414]/40 pointer-events-none">▾</span>
+    </div>
 
-                            <div className="relative">
-                                <input
-                                    type="text"
-                                    required
-                                    placeholder=" "
-                                    name="phoneOrEmail"
-                                    id="phoneOrEmail"
-                                    className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300"
-                                />
-                                <label
-                                    htmlFor="phoneOrEmail"
-                                    className="absolute left-0 top-2 text-[#3A1414]/40 text-base transition-all duration-300 pointer-events-none peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#AC2B2B] peer-focus:tracking-widest peer-focus:uppercase peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:tracking-widest peer-[:not(:placeholder-shown)]:uppercase"
-                                >
-                                    Phone or Email
-                                </label>
-                            </div>
+    <div className="relative">
+        <input
+            type="text"
+            required
+            placeholder=" "
+            name="phoneOrEmail"
+            id="phoneOrEmail"
+            value={phoneOrEmail}
+            onChange={(e) => setPhoneOrEmail(e.target.value)}
+            className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300"
+        />
+        <label
+            htmlFor="phoneOrEmail"
+            className="absolute left-0 top-2 text-[#3A1414]/40 text-base transition-all duration-300 pointer-events-none peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#AC2B2B] peer-focus:tracking-widest peer-focus:uppercase peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:tracking-widest peer-[:not(:placeholder-shown)]:uppercase"
+        >
+            Phone or Email
+        </label>
+    </div>
 
-                            <div className="relative">
-                                <textarea
-                                    rows={2}
-                                    placeholder=" "
-                                    name="specialRequests"
-                                    id="specialRequests"
-                                    className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300 resize-none"
-                                />
-                                <label
-                                    htmlFor="specialRequests"
-                                    className="absolute left-0 top-2 text-[#3A1414]/40 text-base transition-all duration-300 pointer-events-none peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#AC2B2B] peer-focus:tracking-widest peer-focus:uppercase peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:tracking-widest peer-[:not(:placeholder-shown)]:uppercase"
-                                >
-                                    Special Requests
-                                </label>
-                            </div>
+    <div className="relative">
+        <textarea
+            rows={2}
+            placeholder=" "
+            name="specialRequests"
+            id="specialRequests"
+            value={specialRequests}
+            onChange={(e) => setSpecialRequests(e.target.value)}
+            className="peer w-full bg-transparent border-0 border-b border-[#3A1414]/20 px-0 py-2 focus:outline-none focus:border-[#AC2B2B] transition-colors duration-300 resize-none"
+        />
+        <label
+            htmlFor="specialRequests"
+            className="absolute left-0 top-2 text-[#3A1414]/40 text-base transition-all duration-300 pointer-events-none peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#AC2B2B] peer-focus:tracking-widest peer-focus:uppercase peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:tracking-widest peer-[:not(:placeholder-shown)]:uppercase"
+        >
+            Special Requests
+        </label>
+    </div>
 
-                            <button
-                                type="submit"
-                                className="group relative inline-flex items-center justify-center gap-3 mt-2 font-inika text-sm uppercase tracking-[0.25em] text-white bg-[#AC2B2B] hover:bg-[#8B2020] py-4 transition-all duration-300 active:scale-[0.98] cursor-pointer"
-                            >
-                                Confirm Reservation
-                                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                            </button>
-                        </form>
+    {errorMessage && (
+        <p className="text-sm text-[#AC2B2B] -mt-4">{errorMessage}</p>
+    )}
+    {successMessage && (
+        <p className="text-sm text-green-700 -mt-4">{successMessage}</p>
+    )}
+
+    <button
+        type="submit"
+        disabled={isSubmitting}
+        className="group relative inline-flex items-center justify-center gap-3 mt-2 font-inika text-sm uppercase tracking-[0.25em] text-white bg-[#AC2B2B] hover:bg-[#8B2020] py-4 transition-all duration-300 active:scale-[0.98] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+        {isSubmitting ? "Confirming..." : "Confirm Reservation"}
+        {!isSubmitting && (
+            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+        )}
+    </button>
+</form>
                     </div>
                 </div>
             )}
