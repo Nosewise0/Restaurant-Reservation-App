@@ -12,7 +12,7 @@ interface ReservationFormResponse {
     error?: string;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL || 'https://olivesarah.vercel.app/';
 
 export async function reservationFormSubmit(data: ReservationFormData): Promise<ReservationFormResponse> {
     const response = await fetch(`${API_URL}/api/reservations`, {
