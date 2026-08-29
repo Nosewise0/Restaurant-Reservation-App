@@ -64,7 +64,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 
                     <div className="flex items-center gap-2 sm:gap-6 shrink-0">
                         <ul className="hidden sm:flex items-center text-lg md:text-xl font-inika">
-                            <ScrollReveal
+                            {/* <ScrollReveal
                                 as="li"
                                 animation="fade-left"
                                 delay={100}
@@ -84,7 +84,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
                                 aria-hidden="true"
                             >
                                 |
-                            </ScrollReveal>
+                            </ScrollReveal> */}
                             <ScrollReveal
                                 as="li"
                                 animation="fade-left"
