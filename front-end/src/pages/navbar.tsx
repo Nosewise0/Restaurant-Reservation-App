@@ -177,7 +177,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
                                 Reserve
                             </li>
                     </ul>
-                    <ul className="mt-8 flex flex-col gap-6 font-inika text-2xl">
+                    {/* <ul className="mt-8 flex flex-col gap-6 font-inika text-2xl">
                             <li
                                 className={`md:hidden cursor-pointer relative py-1 inline-block w-fit transition-all duration-300 hover:translate-x-2 hover:text-amber-100 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left ${
                                     isDrawerOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
@@ -185,7 +185,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
                             >
                                 Takeout
                             </li>
-                    </ul>
+                    </ul> */}
                 </div>
                 <div
                     className={`text-sm text-white/70 border-t border-white/20 pt-6 transition-all duration-300 ${
