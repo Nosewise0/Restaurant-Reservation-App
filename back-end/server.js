@@ -6,7 +6,21 @@ const reservationRoutes = require('./routes/reservations');
 
 const app = express();
 
-app.use(cors({origin:process.env.FRONTEND_URL || 'http://localhost:3000'}));
+    const allowedOrigins = [
+    process.env.FRONTEND_URL || 'http://localhost:5173',
+     "https://olivesarah.vercel.app",
+    ];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  }
+}))
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
